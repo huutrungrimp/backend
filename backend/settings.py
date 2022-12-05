@@ -148,7 +148,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 CORS_ALLOWED_ORIGINS = [
     'https://localhost:3000',
     'http://localhost:3000',
-    'https://frontlogger.herokuapp.com'
+    'https://financelog.up.railway.app'
 ]
 
 
