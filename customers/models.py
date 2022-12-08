@@ -7,7 +7,7 @@ class Customer(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     customerName = models.CharField(null=True, blank=True, max_length=255)
     email = models.EmailField(null=True, blank=True)
-    phone = models.IntegerField(null=True, blank=True)
+    phone = models.CharField(null=True, blank=True, max_length=15)
     address = models.CharField(null=True, blank=True, max_length=255)
     city = models.CharField(null=True, blank=True, max_length=255)
     province = models.CharField(null=True, blank=True, max_length=255)

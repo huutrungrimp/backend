@@ -5,14 +5,15 @@ from .serializers import CustomerSerializer
 from django.db import IntegrityError
 from rest_framework.decorators import api_view
 from rest_framework import status
-
+from django.http import HttpResponse
 
 
 
 @api_view(['GET','PUT'])
 def updateCustomer(request, username, id):
     try:
-        customer = Customer.objects.get(id=id, user=User.objects.get(username=username)) 
+        user = User.objects.get(username=username)
+        customer = Customer.objects.get(id=id, user=user) 
         
     except Customer.DoesNotExist:
         return Response({"error": "The customer is not found"}, status=404)
@@ -21,20 +22,12 @@ def updateCustomer(request, username, id):
         serializer = CustomerSerializer(customer, many=False)
         return Response(serializer.data)
 
-    if request.method == 'PUT':
-        request.data._mutable = True # New
-        if len(request.data['phone']) == 0: # Check if phone input is empty before using replace
-            request.data['phone'] = None # assign the field is empty
-            return Response(request.data)
-        else:
-            updatePhone = int(request.data['phone'].replace("'", "").replace('"', '')) # Help to remove "" or '' when string passed in
-            request.data['phone'] == updatePhone
-            serializer = CustomerSerializer(customer, data=request.data)
-            if serializer.is_valid():
-                serializer.save()
-                return Response(serializer.data)
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
+    if request.method == 'PUT':        
+        serializer = CustomerSerializer(customer, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     else:
         return Response({'message': 'You do not have permision.'})
 
