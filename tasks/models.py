@@ -5,6 +5,7 @@ from accounts.models import User
 
 class Task(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    isCompleted = models.BooleanField(default=False)
     title = models.TextField(null=True)
     date_time_start = models.DateTimeField()
     date_time_end = models.DateTimeField()
