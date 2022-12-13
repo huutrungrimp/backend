@@ -66,6 +66,7 @@ def createTask(request, username, customerID):
     date_time_start = request.data['date_time_start']
     date_time_end = request.data['date_time_end']
     hours = request.data['hours']
+    task_rate = request.data['task_rate']
     customer = Customer.objects.get(id=customerID)
 
     task = Task.objects.create(
@@ -75,6 +76,7 @@ def createTask(request, username, customerID):
         date_time_end = date_time_end,
         hours = hours,
         customer = customer,
+        task_rate=task_rate,
     )
     task.save()
 

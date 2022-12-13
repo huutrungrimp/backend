@@ -12,11 +12,11 @@ class Task(models.Model):
     hours = models.FloatField(null=True)
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
     task_rate = models.FloatField(null=True, blank=True)
+    task_pay = models.FloatField(null=True, blank=True)
 
     def __str__(self):
+        self.task_pay = (self.task_rate)*(self.hours)
+        super(Task, self).save()
         return self.title
 
-    def task_pay(self):
-        amount = self.hours*self.task_pay
-        return amount
 
