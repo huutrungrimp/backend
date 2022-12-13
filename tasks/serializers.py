@@ -9,4 +9,4 @@ class TaskSerializer(serializers.ModelSerializer):
     customer = CustomerSerializer(read_only=True)
     class Meta:
         model = Task
-        fields = ['id', 'user', 'customer', 'title','isCompleted', 'date_time_start', 'date_time_end', 'hours', 'task_rate']
+        fields = ['id', 'user', 'customer', 'title','isCompleted', 'date_time_start', 'date_time_end', 'hours', 'task_rate', 'task_pay']
