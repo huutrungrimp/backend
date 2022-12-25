@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-&ydtt_lys32dedl9es8yvfhzk37@u2&sz#x(yi673zzyhgr3)s
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://backlog.up.railway.app', '127.0.0.1:8000', '127.0.0.1']
+ALLOWED_HOSTS = ['https://finance.up.railway.app', '127.0.0.1:8000', '127.0.0.1']
 
 
 # Application definition
