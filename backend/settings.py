@@ -148,7 +148,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 CORS_ALLOWED_ORIGINS = [
     'https://localhost:3000',
     'http://localhost:3000',
-    'https://frontlog.up.railway.app'
+    'https://frontfinance.up.railway.app'
 ]
 
 
